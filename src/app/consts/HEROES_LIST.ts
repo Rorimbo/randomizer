@@ -1,6 +1,6 @@
-import { HeroesGroup } from './heroesGroup';
+import { Hero } from '../types/hero';
 
-export const HEROES_LIST: HeroesGroup[] = [
+export const HEROES_LIST: Hero[] = [
   {
     name: 'Ixia',
     isExists: true,

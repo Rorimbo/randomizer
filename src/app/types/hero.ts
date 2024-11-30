@@ -1,4 +1,4 @@
-export type HeroesGroup = {
+export type Hero = {
   name: string;
   isExists: boolean;
 };

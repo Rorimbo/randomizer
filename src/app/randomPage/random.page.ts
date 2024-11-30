@@ -7,8 +7,8 @@ import {
   IonButton,
   IonItem,
 } from '@ionic/angular/standalone';
-import { HEROES_LIST } from '../HEROES_LIST';
-import { HeroesGroup } from '../heroesGroup';
+import { HEROES_LIST } from '../consts/HEROES_LIST';
+import { Hero } from '../types/hero';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -27,7 +27,7 @@ import { CommonModule } from '@angular/common';
   ],
 })
 export class RandomPage {
-  randomHero: HeroesGroup;
+  randomHero: Hero;
   heroesList = HEROES_LIST;
 
   generateRandomNumber(min: number, max: number): number {
