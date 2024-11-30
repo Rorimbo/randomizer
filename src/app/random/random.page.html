@@ -1,10 +1,12 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title> heroes </ion-title>
+    <ion-title> {{ line }} </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-button (click)="setRandomHero()"> random hero </ion-button>
+  <ion-fab slot="fixed" horizontal="center" vertical="center">
+    <ion-button (click)="setRandomHero()"> random hero </ion-button>
+  </ion-fab>
   <ion-item *ngIf="randomHero">{{ randomHero.name }}</ion-item>
 </ion-content>

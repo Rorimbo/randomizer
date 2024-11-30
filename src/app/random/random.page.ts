@@ -6,10 +6,13 @@ import {
   IonContent,
   IonButton,
   IonItem,
+  IonFab,
 } from '@ionic/angular/standalone';
 import { HEROES_LIST } from '../consts/HEROES_LIST';
 import { Hero } from '../types/hero';
 import { CommonModule } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
+import { Line } from '../enums/line.enum';
 
 @Component({
   selector: 'app-random',
@@ -17,6 +20,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['random.page.scss'],
   standalone: true,
   imports: [
+    IonFab,
     IonItem,
     IonButton,
     IonHeader,
@@ -29,6 +33,16 @@ import { CommonModule } from '@angular/common';
 export class RandomPage {
   randomHero: Hero;
   heroesList = HEROES_LIST;
+  line: string;
+
+  constructor(private route: ActivatedRoute) {
+    this.route.params.subscribe((params) => {
+      this.line = params['line'];
+      this.heroesList = HEROES_LIST.filter((hero) => {
+        return hero.line === Line[this.line as keyof typeof Line];
+      });
+    });
+  }
 
   generateRandomNumber(min: number, max: number): number {
     let randomNumber: number;

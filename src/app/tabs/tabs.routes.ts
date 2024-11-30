@@ -7,30 +7,20 @@ export const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'random',
+        path: 'random/:line',
         loadComponent: () =>
-          import('../randomPage/random.page').then((m) => m.RandomPage),
-      },
-      {
-        path: 'tab2',
-        loadComponent: () =>
-          import('../tab2/tab2.page').then((m) => m.Tab2Page),
-      },
-      {
-        path: 'tab3',
-        loadComponent: () =>
-          import('../tab3/tab3.page').then((m) => m.Tab3Page),
+          import('../random/random.page').then((m) => m.RandomPage),
       },
       {
         path: '',
-        redirectTo: '/tabs/random',
+        redirectTo: '/tabs/random/Gold',
         pathMatch: 'full',
       },
     ],
   },
   {
     path: '',
-    redirectTo: '/tabs/random',
+    redirectTo: '/tabs/random/Gold',
     pathMatch: 'full',
   },
 ];
