@@ -32,7 +32,7 @@ import { Line } from '../enums/line.enum';
 })
 export class RandomPage {
   randomHero: Hero;
-  heroesList = HEROES_LIST;
+  heroesList: Hero[];
   line: string;
 
   constructor(private route: ActivatedRoute) {
