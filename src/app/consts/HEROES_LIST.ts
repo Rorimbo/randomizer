@@ -38,6 +38,11 @@ export const HEROES_LIST: Hero[] = [
     line: Line.Gold,
   },
   {
+    name: 'Harith',
+    isExists: true,
+    line: Line.Gold,
+  },
+  {
     name: 'Kimmy',
     isExists: true,
     line: Line.Gold,
@@ -245,7 +250,7 @@ export const HEROES_LIST: Hero[] = [
   },
 
   {
-    name: 'Zhxin',
+    name: 'Zhuxin',
     isExists: true,
     line: Line.Mid,
   },
@@ -291,11 +296,6 @@ export const HEROES_LIST: Hero[] = [
   },
   {
     name: 'Kadita',
-    isExists: true,
-    line: Line.Mid,
-  },
-  {
-    name: 'Harith',
     isExists: true,
     line: Line.Mid,
   },

@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title> {{ line }} </ion-title>
+    <ion-title class="title"> {{ line }} </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -8,5 +8,8 @@
   <ion-fab slot="fixed" horizontal="center" vertical="center">
     <ion-button (click)="setRandomHero()"> random hero </ion-button>
   </ion-fab>
-  <ion-item *ngIf="randomHero">{{ randomHero.name }}</ion-item>
+  <div *ngIf="randomHero" class="img">
+    <!-- {{ randomHero.name }} -->
+    <img aria-hidden="true" src="assets/{{randomHero.name}}.png" />
+  </div>
 </ion-content>

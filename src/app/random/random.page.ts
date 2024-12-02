@@ -7,6 +7,7 @@ import {
   IonButton,
   IonItem,
   IonFab,
+  IonFabButton,
 } from '@ionic/angular/standalone';
 import { HEROES_LIST } from '../consts/HEROES_LIST';
 import { Hero } from '../types/hero';
@@ -20,6 +21,7 @@ import { Line } from '../enums/line.enum';
   styleUrls: ['random.page.scss'],
   standalone: true,
   imports: [
+    IonFabButton,
     IonFab,
     IonItem,
     IonButton,
@@ -51,7 +53,7 @@ export class RandomPage {
   }
 
   setRandomHero(): void {
-    let randomNumber = this.generateRandomNumber(0, this.heroesList.length);
+    let randomNumber = this.generateRandomNumber(0, this.heroesList.length - 1);
     this.randomHero = this.heroesList[randomNumber];
   }
 }
