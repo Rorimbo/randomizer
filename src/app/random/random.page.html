@@ -1,15 +1,20 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title class="title"> {{ line }} </ion-title>
+    <ion-icon name="settings"> </ion-icon>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="container">
   <ion-fab slot="fixed" horizontal="center" vertical="center">
-    <ion-button (click)="setRandomHero()"> random hero </ion-button>
+    <button (click)="setRandomHero()" class="btnRandom">choose hero</button>
   </ion-fab>
   <div *ngIf="randomHero" class="img">
     <!-- {{ randomHero.name }} -->
-    <img aria-hidden="true" src="assets/{{randomHero.name}}.png" />
+    <img
+      aria-hidden="true"
+      src="assets/heroes/mid/{{randomHero.name}}.jpg"
+      class="img"
+    />
   </div>
 </ion-content>

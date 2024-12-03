@@ -4,10 +4,9 @@ import {
   IonToolbar,
   IonTitle,
   IonContent,
-  IonButton,
   IonItem,
   IonFab,
-  IonFabButton,
+  IonIcon,
 } from '@ionic/angular/standalone';
 import { HEROES_LIST } from '../consts/HEROES_LIST';
 import { Hero } from '../types/hero';
@@ -21,10 +20,9 @@ import { Line } from '../enums/line.enum';
   styleUrls: ['random.page.scss'],
   standalone: true,
   imports: [
-    IonFabButton,
+    IonIcon,
     IonFab,
     IonItem,
-    IonButton,
     IonHeader,
     IonToolbar,
     IonTitle,

@@ -1,5 +1,14 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
+
+ion-toolbar {
+  height: 100%;
+}
+
 .title {
+  height: 5vh;
   text-align: center;
+  font-size: 5vw;
+  padding: 0;
 }
 
 .img {
@@ -7,4 +16,71 @@
   object-fit: cover;
   width: 100vw;
   height: 100vh;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.container ion-fab {
+  position: relative;
+  width: 50vw;
+  height: 10vh;
+  display: inline-block;
+  background: #fff;
+  margin: 20px;
+}
+.container ion-fab:before,
+.container ion-fab:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transition: 0.5s;
+  background: #f00;
+}
+.container ion-fab:nth-child(1):before,
+.container ion-fab:nth-child(1):after {
+  background: linear-gradient(45deg, #00ccff, #0e1538, #d400d4);
+}
+// .container ion-fab:nth-child(1):before,
+// .container ion-fab:nth-child(1):after {
+//   background: linear-gradient(45deg, #f0075b, #0e1538, #1aff22);
+// }
+.container ion-fab:hover:before {
+  inset: -3px;
+}
+.container ion-fab:hover:after {
+  inset: -3px;
+  filter: blur(10px);
+}
+.btnRandom {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  background: #0e1538;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 7vw;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #fff;
+  border: 1px solid #040a29;
+  overflow: hidden;
+}
+.btnRandom::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.075);
+  transform: skew(25deg);
 }

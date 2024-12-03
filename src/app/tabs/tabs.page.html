@@ -1,11 +1,11 @@
 <ion-tabs>
-  <ion-tab-bar slot="bottom">
+  <ion-tab-bar slot="bottom" class="tabBar">
     <ion-tab-button
       *ngFor="let line of lines"
       tab="random/{{line}}"
       href="/tabs/random/{{line}}"
     >
-      <img aria-hidden="true" src="assets/{{line}}.png" />
+      <img aria-hidden="true" src="assets/{{line}}.png" class="imgIcon" />
       <!-- <ion-label> {{line}} </ion-label> -->
     </ion-tab-button>
   </ion-tab-bar>
