@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import {
   IonHeader,
   IonToolbar,
@@ -6,13 +6,18 @@ import {
   IonContent,
   IonItem,
   IonFab,
-  IonIcon,
+  IonButton,
+  IonModal,
+  IonButtons,
+  IonList,
+  IonCheckbox,
 } from '@ionic/angular/standalone';
 import { HEROES_LIST } from '../consts/HEROES_LIST';
 import { Hero } from '../types/hero';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Line } from '../enums/line.enum';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-random',
@@ -20,7 +25,11 @@ import { Line } from '../enums/line.enum';
   styleUrls: ['random.page.scss'],
   standalone: true,
   imports: [
-    IonIcon,
+    IonCheckbox,
+    IonList,
+    IonButtons,
+    IonModal,
+    IonButton,
     IonFab,
     IonItem,
     IonHeader,
@@ -28,18 +37,26 @@ import { Line } from '../enums/line.enum';
     IonTitle,
     IonContent,
     CommonModule,
+    FormsModule,
   ],
 })
 export class RandomPage {
+  @ViewChild(IonModal) modal: IonModal;
   randomHero: Hero;
   heroesList: Hero[];
+  selectedHeroes: Hero[];
   line: string;
 
   constructor(private route: ActivatedRoute) {
     this.route.params.subscribe((params) => {
       this.line = params['line'];
       this.heroesList = HEROES_LIST.filter((hero) => {
-        return hero.line === Line[this.line as keyof typeof Line];
+        return hero.line.find(
+          (line) => line === Line[this.line as keyof typeof Line]
+        );
+      });
+      this.selectedHeroes = this.heroesList.filter((hero) => {
+        return hero.isExists;
       });
     });
   }
@@ -51,7 +68,17 @@ export class RandomPage {
   }
 
   setRandomHero(): void {
-    let randomNumber = this.generateRandomNumber(0, this.heroesList.length - 1);
-    this.randomHero = this.heroesList[randomNumber];
+    let randomNumber = this.generateRandomNumber(
+      0,
+      this.selectedHeroes.length - 1
+    );
+    this.randomHero = this.selectedHeroes[randomNumber];
+  }
+
+  cancel() {
+    this.selectedHeroes = this.heroesList.filter((hero) => {
+      return hero.isExists;
+    });
+    this.modal.dismiss(null, 'cancel');
   }
 }
