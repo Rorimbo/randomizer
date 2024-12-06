@@ -15,11 +15,10 @@ ion-toolbar {
   font-size: 5vw;
 }
 
+.img-heroes,
 .img {
-  position: absolute;
-  object-fit: cover;
-  width: 100vw;
-  height: 100vh;
+  object-fit: contain;
+  height: 100%;
 }
 
 .container {

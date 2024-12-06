@@ -300,12 +300,22 @@ export const HEROES_LIST: Hero[] = [
     line: [Line.Mid],
   },
   {
+    name: 'Harith',
+    isExists: true,
+    line: [Line.Mid],
+  },
+  {
     name: 'Lunox',
     isExists: true,
     line: [Line.Mid],
   },
   {
     name: 'Vale',
+    isExists: true,
+    line: [Line.Mid],
+  },
+  {
+    name: 'Selena',
     isExists: true,
     line: [Line.Mid],
   },

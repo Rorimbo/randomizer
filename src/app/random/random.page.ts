@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {
   IonHeader,
   IonToolbar,
@@ -7,6 +7,7 @@ import {
   IonItem,
   IonFab,
   IonButton,
+  IonFabButton,
   IonModal,
   IonButtons,
   IonList,
@@ -18,6 +19,7 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Line } from '../enums/line.enum';
 import { FormsModule } from '@angular/forms';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-random',
@@ -29,8 +31,9 @@ import { FormsModule } from '@angular/forms';
     IonList,
     IonButtons,
     IonModal,
-    IonButton,
     IonFab,
+    IonButton,
+    IonFabButton,
     IonItem,
     IonHeader,
     IonToolbar,
@@ -39,46 +42,53 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     FormsModule,
   ],
+  providers: [DataService],
 })
-export class RandomPage {
+export class RandomPage implements OnInit {
   @ViewChild(IonModal) modal: IonModal;
   randomHero: Hero;
   heroesList: Hero[];
   selectedHeroes: Hero[];
   line: string;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(
+    private route: ActivatedRoute,
+    private dataService: DataService
+  ) {}
+
+  ngOnInit() {
     this.route.params.subscribe((params) => {
       this.line = params['line'];
-      this.heroesList = HEROES_LIST.filter((hero) => {
-        return hero.line.find(
-          (line) => line === Line[this.line as keyof typeof Line]
-        );
-      });
-      this.selectedHeroes = this.heroesList.filter((hero) => {
-        return hero.isExists;
+      this.dataService.getData(this.line).then((savedHeroes) => {
+        this.heroesList =
+          savedHeroes ||
+          HEROES_LIST.filter((hero) => {
+            return hero.line.find(
+              (line) => line === Line[this.line as keyof typeof Line]
+            );
+          });
+        this.selectedHeroes = this.heroesList.filter((hero) => hero.isExists);
       });
     });
   }
 
-  generateRandomNumber(min: number, max: number): number {
-    let randomNumber: number;
-    randomNumber = min + Math.random() * (max + 1 - min);
-    return Math.floor(randomNumber);
+  saveHeroes() {
+    this.dataService.saveData(this.heroesList, this.line);
+  }
+
+  close() {
+    this.selectedHeroes = this.heroesList.filter((hero) => {
+      return hero.isExists;
+    });
+    this.saveHeroes();
+    this.modal.dismiss(null, 'close');
   }
 
   setRandomHero(): void {
-    let randomNumber = this.generateRandomNumber(
+    let randomNumber = this.dataService.generateRandomNumber(
       0,
       this.selectedHeroes.length - 1
     );
     this.randomHero = this.selectedHeroes[randomNumber];
-  }
-
-  cancel() {
-    this.selectedHeroes = this.heroesList.filter((hero) => {
-      return hero.isExists;
-    });
-    this.modal.dismiss(null, 'cancel');
   }
 }
