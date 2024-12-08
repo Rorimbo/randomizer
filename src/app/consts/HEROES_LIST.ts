@@ -38,6 +38,11 @@ export const HEROES_LIST: Hero[] = [
     line: [Line.Gold],
   },
   {
+    name: 'Granger',
+    isExists: true,
+    line: [Line.Gold],
+  },
+  {
     name: 'Harith',
     isExists: true,
     line: [Line.Gold],
@@ -140,6 +145,11 @@ export const HEROES_LIST: Hero[] = [
   },
   {
     name: 'Barats',
+    isExists: true,
+    line: [Line.Jungle],
+  },
+  {
+    name: 'Popol and Kupa',
     isExists: true,
     line: [Line.Jungle],
   },
@@ -391,6 +401,11 @@ export const HEROES_LIST: Hero[] = [
     line: [Line.Roam],
   },
   {
+    name: 'Edith',
+    isExists: true,
+    line: [Line.Roam],
+  },
+  {
     name: 'Mathilda',
     isExists: true,
     line: [Line.Roam],
@@ -407,6 +422,11 @@ export const HEROES_LIST: Hero[] = [
   },
   {
     name: 'Khufra',
+    isExists: true,
+    line: [Line.Roam],
+  },
+  {
+    name: 'Minsitthar',
     isExists: true,
     line: [Line.Roam],
   },
@@ -462,6 +482,11 @@ export const HEROES_LIST: Hero[] = [
   },
   {
     name: 'Johnson',
+    isExists: true,
+    line: [Line.Roam],
+  },
+  {
+    name: 'Chou',
     isExists: true,
     line: [Line.Roam],
   },
@@ -612,7 +637,17 @@ export const HEROES_LIST: Hero[] = [
     line: [Line.Exp],
   },
   {
+    name: 'Gatotkaca',
+    isExists: true,
+    line: [Line.Exp],
+  },
+  {
     name: 'Lapu-Lapu',
+    isExists: true,
+    line: [Line.Exp],
+  },
+  {
+    name: 'Hilda',
     isExists: true,
     line: [Line.Exp],
   },
@@ -638,6 +673,11 @@ export const HEROES_LIST: Hero[] = [
   },
   {
     name: 'Zilong',
+    isExists: true,
+    line: [Line.Exp],
+  },
+  {
+    name: 'Bane',
     isExists: true,
     line: [Line.Exp],
   },
