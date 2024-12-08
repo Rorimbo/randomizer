@@ -1,26 +1,35 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
 
-ion-toolbar {
-  height: 100%;
+/* Header toolbox */
+.menu {
+  height: 6vh;
 }
 
 .title {
-  height: 5vh;
-  text-align: center;
-  font-size: 5vw;
-  padding: 0;
+  height: 100%;
+  margin-top: 0.5rem;
+  font-size: x-large;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.btnSettings {
-  font-size: 5vw;
+.btn-settings {
+  font-size: x-large;
 }
 
-.img-heroes,
+.settings-icon {
+  height: 70%;
+}
+
+/* Hero picture */
 .img {
+  text-align: center;
   object-fit: contain;
   height: 100%;
 }
 
+/* Randomize button */
 .container {
   display: flex;
   justify-content: center;
@@ -47,10 +56,6 @@ ion-toolbar {
 .container ion-fab:nth-child(1):after {
   background: linear-gradient(45deg, #00ccff, #0e1538, #d400d4);
 }
-// .container ion-fab:nth-child(1):before,
-// .container ion-fab:nth-child(1):after {
-//   background: linear-gradient(45deg, #f0075b, #0e1538, #1aff22);
-// }
 .container ion-fab:hover:before {
   inset: -3px;
 }
@@ -58,26 +63,26 @@ ion-toolbar {
   inset: -3px;
   filter: blur(10px);
 }
-.btnRandom {
+
+.btn-random {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  display: inline-block;
   background: #0e1538;
   z-index: 10;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 7vw;
+  font-size: xx-large;
   text-transform: uppercase;
   letter-spacing: 2px;
   color: #fff;
   border: 1px solid #040a29;
   overflow: hidden;
 }
-.btnRandom::before {
+.btn-random::before {
   content: "";
   position: absolute;
   top: 0;

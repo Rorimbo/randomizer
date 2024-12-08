@@ -1,0 +1,21 @@
+<ion-modal trigger="open-modal-{{line}}" class="dialog">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-button (click)="onClose()">Close</ion-button>
+        </ion-buttons>
+        <ion-title>Heroes</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item *ngFor="let hero of heroesList">
+          <ion-checkbox labelPlacement="start" [(ngModel)]="hero.isExists">
+            {{ hero.name }}
+          </ion-checkbox>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ng-template>
+</ion-modal>

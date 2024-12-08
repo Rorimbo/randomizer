@@ -27,8 +27,5 @@ export class DataService {
       return JSON.parse(value);
     }
     return null;
-
-    // const data = localStorage.getItem(key);
-    // return data ? JSON.parse(data) : null;
   }
 }

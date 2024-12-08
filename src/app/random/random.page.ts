@@ -1,17 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   IonHeader,
   IonToolbar,
   IonTitle,
   IonContent,
-  IonItem,
   IonFab,
-  IonButton,
   IonFabButton,
-  IonModal,
-  IonButtons,
-  IonList,
-  IonCheckbox,
 } from '@ionic/angular/standalone';
 import { HEROES_LIST } from '../consts/HEROES_LIST';
 import { Hero } from '../types/hero';
@@ -20,6 +14,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Line } from '../enums/line.enum';
 import { FormsModule } from '@angular/forms';
 import { DataService } from '../data.service';
+import { DialogPage } from '../dialog/dialog.page';
 
 @Component({
   selector: 'app-random',
@@ -27,25 +22,19 @@ import { DataService } from '../data.service';
   styleUrls: ['random.page.scss'],
   standalone: true,
   imports: [
-    IonCheckbox,
-    IonList,
-    IonButtons,
-    IonModal,
     IonFab,
-    IonButton,
     IonFabButton,
-    IonItem,
     IonHeader,
     IonToolbar,
     IonTitle,
     IonContent,
     CommonModule,
     FormsModule,
+    DialogPage,
   ],
   providers: [DataService],
 })
 export class RandomPage implements OnInit {
-  @ViewChild(IonModal) modal: IonModal;
   randomHero: Hero;
   heroesList: Hero[];
   selectedHeroes: Hero[];
@@ -63,25 +52,15 @@ export class RandomPage implements OnInit {
         this.heroesList =
           savedHeroes ||
           HEROES_LIST.filter((hero) => {
-            return hero.line.find(
-              (line) => line === Line[this.line as keyof typeof Line]
+            return (
+              hero.line.findIndex((line) => {
+                return line === Line[this.line as keyof typeof Line];
+              }) > -1
             );
           });
-        this.selectedHeroes = this.heroesList.filter((hero) => hero.isExists);
+        this.updateSelectedHeroes();
       });
     });
-  }
-
-  saveHeroes() {
-    this.dataService.saveData(this.heroesList, this.line);
-  }
-
-  close() {
-    this.selectedHeroes = this.heroesList.filter((hero) => {
-      return hero.isExists;
-    });
-    this.saveHeroes();
-    this.modal.dismiss(null, 'close');
   }
 
   setRandomHero(): void {
@@ -90,5 +69,14 @@ export class RandomPage implements OnInit {
       this.selectedHeroes.length - 1
     );
     this.randomHero = this.selectedHeroes[randomNumber];
+  }
+
+  updateSelectedHeroes() {
+    this.selectedHeroes = this.heroesList.filter((hero) => hero.isExists);
+    this.saveHeroes();
+  }
+
+  saveHeroes() {
+    this.dataService.saveData(this.heroesList, this.line);
   }
 }

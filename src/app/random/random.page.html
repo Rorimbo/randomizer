@@ -1,48 +1,34 @@
 <ion-header [translucent]="true">
   <ion-toolbar class="menu">
-    <ion-title class="title"> {{ line }} </ion-title>
-    <ion-fab>
-      <ion-fab-button class="btnSettings" id="open-modal" expand="block">
-        <img
-          src="assets/settings.svg"
-          alt="settings"
-          class="settingsIcon"
-        /> </ion-fab-button
-    ></ion-fab>
+    <ion-title class="title">{{ line }} </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" class="container">
   <ion-fab slot="fixed" horizontal="center" vertical="center">
-    <button (click)="setRandomHero()" class="btnRandom">choose hero</button>
+    <button (click)="setRandomHero()" class="btn-random">generate hero</button>
   </ion-fab>
-  <div *ngIf="randomHero" class="img-heroes">
-    <img
-      aria-hidden="true"
-      src="assets/heroes/{{line.toLowerCase()}}/{{randomHero.name}}.jpg"
-      class="img"
-    />
-  </div>
+  <img
+    *ngIf="randomHero"
+    aria-hidden="true"
+    src="assets/heroes/{{line.toLowerCase()}}/{{randomHero.name}}.jpg"
+    class="img"
+  />
 </ion-content>
 
-<ion-modal trigger="open-modal" class="dialog">
-  <ng-template>
-    <ion-header>
-      <ion-toolbar>
-        <ion-buttons slot="start">
-          <ion-button (click)="close()">Close</ion-button>
-        </ion-buttons>
-        <ion-title>Heroes</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content>
-      <ion-list>
-        <ion-item *ngFor="let hero of heroesList">
-          <ion-checkbox labelPlacement="start" [(ngModel)]="hero.isExists">
-            {{ hero.name }}
-          </ion-checkbox>
-        </ion-item>
-      </ion-list>
-    </ion-content>
-  </ng-template>
-</ion-modal>
+<app-dialog
+  [heroesList]="heroesList"
+  [line]="line"
+  (close)="updateSelectedHeroes()"
+></app-dialog>
+
+<ion-fab slot="fixed" horizontal="end" vertical="start">
+  <ion-fab-button
+    class="btn-settings"
+    id="open-modal-{{line}}"
+    expand="block"
+    size="small"
+  >
+    <img src="assets/settings.svg" alt="settings" class="settings-icon" />
+  </ion-fab-button>
+</ion-fab>
